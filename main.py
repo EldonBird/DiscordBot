@@ -47,13 +47,7 @@ async def comp(interaction: discord.Interaction, member:discord.Member=None):
     role = member.guild.get_role(1251770500531884095)
 
 
-
-    #role = member.get_role(1251770500531884095)
-    #print(f"Got the {role.name}")
-
-
     await member.add_roles(role)
-
 
 
 
