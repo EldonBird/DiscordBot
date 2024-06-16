@@ -2,8 +2,10 @@ import discord
 from discord.ext import commands, tasks
 from discord.utils import get
 
+
 import os
 import asyncio
+
 
 
 from itertools import cycle
@@ -21,17 +23,38 @@ async def change_bot_status():
 async def on_ready():
     print("Bot ready!")
     change_bot_status.start()
+    synced = await bot.tree.sync()
+    print(f"{synced} Commands Synced")
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send(f"hello there, {ctx.author.mention}!")
 
-@bot.command()
-async def Comp(ctx):
-    member = ctx.message.author
-    role = get(member.guild.roles, name="Competitor")
+
+@bot.tree.command(name="hello", description="Says Hi!")
+async def heya(interaction: discord.Interaction):
+    print("HI")
+    await interaction.response.send_message(f"HI, {interaction.user.display_name}")
+    #await interaction.reply(f"hello there, {interaction.author.mention}!")
+
+
+
+
+@bot.tree.command(name="comp", description="adds the Competitor Role")
+async def comp(interaction: discord.Interaction, member:discord.Member=None):
+    if(member == None):
+        member = interaction.user
+
+    await interaction.response.send_message(f"Made {member.mention} a competitor")
+
+    role = member.guild.get_role(1251770500531884095)
+
+
+
+    #role = member.get_role(1251770500531884095)
+    #print(f"Got the {role.name}")
+
+
     await member.add_roles(role)
-    await ctx.send("EAT SHIT FATTY!")
+
+
 
 
 with open("token.txt") as file:
