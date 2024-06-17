@@ -4,8 +4,13 @@ from discord.utils import get
 
 
 import os
+import sys
 import asyncio
 
+#import openpyxl
+#from openpyxl import load_workbook
+
+import DBManager
 
 
 from itertools import cycle
@@ -65,6 +70,12 @@ async def main():
     async with bot:
         await load()
         await bot.start(token)
+
+
+async def load_DB():
+
+
+
 
 
 asyncio.run(main())
