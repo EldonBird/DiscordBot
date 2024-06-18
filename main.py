@@ -56,9 +56,6 @@ async def comp(interaction: discord.Interaction, member:discord.Member=None):
 
 
 
-with open("token.txt") as file:
-    token = file.read()
-
 
 async def load():
     for filename in os.listdir("./cogs"):
@@ -73,9 +70,10 @@ async def main():
 
 
 async def load_DB():
+    pass
 
-
-
+with open("token.txt") as file:
+    token = file.read()
 
 
 asyncio.run(main())
