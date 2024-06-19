@@ -32,16 +32,6 @@ async def on_ready():
     print(f"{synced} Commands Synced")
 
 
-
-@bot.tree.command(name="hello", description="Says Hi!")
-async def heya(interaction: discord.Interaction):
-    print("HI")
-    await interaction.response.send_message(f"HI, {interaction.user.display_name}")
-    #await interaction.reply(f"hello there, {interaction.author.mention}!")
-
-
-
-
 @bot.tree.command(name="comp", description="adds the Competitor Role")
 async def comp(interaction: discord.Interaction, member:discord.Member=None):
     if(member == None):
