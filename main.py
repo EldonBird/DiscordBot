@@ -10,8 +10,6 @@ import asyncio
 #import openpyxl
 #from openpyxl import load_workbook
 
-import DBManager
-
 
 from itertools import cycle
 
@@ -57,7 +55,7 @@ async def join(interaction: discord.Interaction, member:discord.Member=None):
 @bot.tree.command(name="test", description="EAT SHIT FATTY")
 async def test(interaction: discord.Interaction):
     interaction.response.send_message(f"Eat MY Stinky Farts")
-
+    print("hi")
 
 async def load():
     for filename in os.listdir("./cogs"):

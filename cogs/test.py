@@ -13,6 +13,11 @@ class Test(commands.Cog):
     async def ping(self, ctx):
         await ctx.send("Eat my Farts Buddy")
 
+    @commands.command()
+    async def sync(self, ctx):
+        await self.bot.tree.sync()
+        await ctx.send("COMPLEDTED")
+        print("THIS WAS COMPLETED")
 
 async def setup(bot):
     await bot.add_cog(Test(bot))
