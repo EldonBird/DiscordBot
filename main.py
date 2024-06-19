@@ -54,7 +54,9 @@ async def join(interaction: discord.Interaction, member:discord.Member=None):
     await interaction.response.send_message("LOL")
     
 
-
+@bot.tree.command(name="test", description="EAT SHIT FATTY")
+async def test(interaction: discord.Interaction):
+    interaction.response.send_message(f"Eat MY Stinky Farts")
 
 
 async def load():
@@ -69,11 +71,8 @@ async def main():
         await bot.start(token)
 
 
-async def load_DB():
-    pass
-
 with open("token.txt") as file:
     token = file.read()
-
+    
 
 asyncio.run(main())
