@@ -16,7 +16,7 @@ from itertools import cycle
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
-bot_statuses = cycle(["Status One", "Hello", "Eat My Farts", "Campain Happening"])
+bot_statuses = cycle(["EAT", "My", "Farts"])
 
 @tasks.loop(seconds=5)
 async def change_bot_status():
@@ -25,7 +25,7 @@ async def change_bot_status():
 @bot.event
 async def on_ready():
     print("Bot ready!")
-    change_bot_status.start()
+    await change_bot_status.start()
     synced = await bot.tree.sync()
     print(f"{synced} Commands Synced")
 
@@ -36,9 +36,8 @@ async def comp(interaction: discord.Interaction, member:discord.Member=None):
         member = interaction.user
 
     await interaction.response.send_message(f"Made {member.mention} a competitor")
-
     role = member.guild.get_role(1251770500531884095)
-
+    await interaction.response.send_message("HI")
 
     await member.add_roles(role)
 
