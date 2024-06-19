@@ -23,7 +23,8 @@ class CompetitorEntry:
         self.Score = Score
 
     def test(self):
-        return f"{self.DiscordID}, won?: {self.Win}"
+        #return f"{self.DiscordID}, won?: {self.Win}"
+        pass
 
 
 def Addplayer():

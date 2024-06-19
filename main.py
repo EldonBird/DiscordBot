@@ -60,11 +60,9 @@ async def join(interaction: discord.Interaction, member:discord.Member=None):
     if(member == None):
         member = interaction.user
 
-    role = member.guild.get_role(1251770500531884095)
-
-    await interaction.response.send_message(f"Made {member.mention} a competitor")
-
-    await member.add_roles(role)  
+    await interaction.response.send_message(f"{member.display_name} eats my smelly farts")
+    await interaction.response.send_message("LOL")
+    
 
 
 
