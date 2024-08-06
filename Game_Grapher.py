@@ -41,7 +41,6 @@ def GraphFunction(df, playerName):
 
 
 
-
 def GetWinRate(games, wins):
     
     val = round((wins / games) * 100)
@@ -53,6 +52,9 @@ def LoadDataFrame(fileName):
     df = pd.read_csv(fileName)
     return df
 
+
+def appendGame(file, newCol, GameNum):
+    pass
 
 
 def GetPlayerInfo(df, playerName):

@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 from discord.utils import get
-
+import Game_Grapher
 
 import os
 import sys
@@ -9,6 +9,7 @@ import asyncio
 
 #import openpyxl
 #from openpyxl import load_workbook
+
 
 
 from itertools import cycle
@@ -22,12 +23,15 @@ bot_statuses = cycle(["EAT", "My", "Farts"])
 async def change_bot_status():
     await bot.change_presence(activity=discord.Game(next(bot_statuses)))
 
+
+
 @bot.event
 async def on_ready():
     print("Bot ready!")
     await change_bot_status.start()
     synced = await bot.tree.sync()
     print(f"{synced} Commands Synced")
+
 
 
 @bot.tree.command(name="comp", description="adds the Competitor Role")
@@ -42,6 +46,7 @@ async def comp(interaction: discord.Interaction, member:discord.Member=None):
     await member.add_roles(role)
 
 
+
 @bot.tree.command(name="join", description="Join Ongoing Game")
 async def join(interaction: discord.Interaction, member:discord.Member=None):
     if(member == None):
@@ -51,15 +56,19 @@ async def join(interaction: discord.Interaction, member:discord.Member=None):
     await interaction.response.send_message("LOL")
     
 
+
 @bot.tree.command(name="test", description="EAT SHIT FATTY")
 async def test(interaction: discord.Interaction):
     interaction.response.send_message("Eat MY Stinky Farts")
     print("hi")
 
+
+
 async def load():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
+
 
 
 async def main():
@@ -68,8 +77,10 @@ async def main():
         await bot.start(token)
 
 
+
 with open("token.txt") as file:
     token = file.read()
     
+
 
 asyncio.run(main())
