@@ -1,15 +1,10 @@
 import discord
 from discord.ext import commands, tasks
 from discord.utils import get
-import Game_Grapher
 
 import os
 import sys
 import asyncio
-
-#import openpyxl
-#from openpyxl import load_workbook
-
 
 
 from itertools import cycle
@@ -64,16 +59,8 @@ async def test(interaction: discord.Interaction):
 
 
 
-async def load():
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            await bot.load_extension(f"cogs.{filename[:-3]}")
-
-
-
 async def main():
     async with bot:
-        await load()
         await bot.start(token)
 
 
