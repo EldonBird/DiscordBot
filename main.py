@@ -14,9 +14,23 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 bot_statuses = cycle(["EAT", "My", "Farts"])
 
-@tasks.loop(seconds=5)
+
+
+@tasks.loop(seconds=300)
 async def change_bot_status():
-    await bot.change_presence(activity=discord.Game(next(bot_statuses)))
+
+    print('yeppers')
+
+    if (GetStatusMine() == True):
+        await bot.change_presence(activity=discord.Game("UP"))
+        print("PASSED")
+    else:
+        print("FAILED")
+        await bot.change_presence(activity=discord.Game("DOWN"))
+    
+
+    
+    
 
 
 
@@ -63,6 +77,17 @@ async def main():
     async with bot:
         await bot.start(token)
 
+def GetStatusMine():
+    out = False
+
+    f = open("MCStatus.txt", "r")
+
+    if f.read() == "y":
+        out = True
+    
+    f.close()
+
+    return out
 
 
 with open("token.txt") as file:
