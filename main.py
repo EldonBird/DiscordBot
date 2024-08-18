@@ -19,14 +19,11 @@ bot_statuses = cycle(["EAT", "My", "Farts"])
 @tasks.loop(seconds=300)
 async def change_bot_status():
 
-    print('yeppers')
-
     if (GetStatusMine() == True):
-        await bot.change_presence(activity=discord.Game("UP"))
-        print("PASSED")
+        await bot.change_presence(activity=discord.Game("Server UP"))
     else:
-        print("FAILED")
-        await bot.change_presence(activity=discord.Game("DOWN"))
+        print("DOWN")
+        await bot.change_presence(activity=discord.Game("Server DOWN"))
     
 
     
