@@ -19,11 +19,9 @@ bot_statuses = cycle(["EAT", "My", "Farts"])
 @tasks.loop(seconds=300)
 async def change_bot_status():
 
-    if (GetStatusMine() == True):
-        await bot.change_presence(activity=discord.Game("Server UP"))
-    else:
-        print("DOWN")
-        await bot.change_presence(activity=discord.Game("Server DOWN"))
+
+    await bot.change_presence(activity=discord.Game(str(GetStatusMine())))
+
     
 
     
@@ -75,12 +73,11 @@ async def main():
         await bot.start(token)
 
 def GetStatusMine():
-    out = False
+    out = ""
 
     f = open("MCStatus.txt", "r")
 
-    if f.read() == "y":
-        out = True
+    out = f.read()
     
     f.close()
 
