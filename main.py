@@ -43,11 +43,10 @@ async def comp(interaction: discord.Interaction, member:discord.Member=None):
     if(member == None):
         member = interaction.user
 
-    await interaction.response.send_message(f"Made {member.mention} a competitor")
     role = member.guild.get_role(1251770500531884095)
-    await interaction.response.send_message("HI")
-
     await member.add_roles(role)
+    await interaction.response.send_message(f"Made {member.mention} a competitor")
+
 
 
 
@@ -61,16 +60,33 @@ async def join(interaction: discord.Interaction, member:discord.Member=None):
     
 
 
-@bot.tree.command(name="test", description="EAT SHIT FATTY")
+@bot.tree.command(name="IP", description="Get Server IP")
 async def test(interaction: discord.Interaction):
+
     interaction.response.send_message("Eat MY Stinky Farts")
-    print("hi")
+
+
 
 
 
 async def main():
     async with bot:
         await bot.start(token)
+
+
+
+
+def GetIp():
+    out = ""
+
+    f = open("IP", "r")
+
+    out = f.read()
+
+    f.close()
+
+
+    return out
 
 def GetStatusMine():
     out = ""
@@ -86,6 +102,8 @@ def GetStatusMine():
 
 with open("token.txt") as file:
     token = file.read()
+
+
     
 
 
